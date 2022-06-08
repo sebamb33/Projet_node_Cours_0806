@@ -1,0 +1,41 @@
+<h2>Ajouter un produit</h2>
+<form method="post" action="">
+    <label name="name">Nom du produit</label>
+    <input type="text" name="name"/>
+    <br>
+
+    <label name="quantity">Quantité</label>
+    <input type="number" name="quantity"/>
+
+    <br>
+    <button type="submit">Ajouter</button>
+</form>
+<h2>Rechercher un produit</h2>
+<form action="/rech" method="get">
+
+    <label name="quantity">Recherche</label>
+    <input type="text" name="name"/>
+
+    <br>
+    <button type="submit">Recherche</button>
+</form>
+
+
+<table class="tableDonnee">
+    <thead>
+    <tr>Nom</tr>
+    <tr>Quantité</tr>
+    </thead>
+    {{#each products}}
+        <tr>
+            <a href='/'{{this._id}}></a>
+            <td>{{this.name}}</td>
+            <td>{{this.quantity}}</td>
+            <td>
+                <form action="/suppr/{{this._id}}" method="get">
+                    <button type="submit">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+    {{/each}}
+</table>
